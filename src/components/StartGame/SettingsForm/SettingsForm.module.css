@@ -1,0 +1,21 @@
+.form {
+    width: 40%;
+    margin: 48px auto;
+}
+
+.button {
+    margin-top: 42px;
+    display: flex; 
+    justify-content: center;
+}
+
+.form button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #068a48;
+    border: 1px solid #068a48;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+}
