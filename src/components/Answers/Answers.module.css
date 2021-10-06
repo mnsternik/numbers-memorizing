@@ -1,0 +1,19 @@
+.form {
+    display: flex; 
+    flex-direction: column;
+    width: 80%; 
+    margin: 3rem auto;
+}
+
+.form button {
+    width: 150px;
+    margin: 3rem auto;
+    font: inherit;
+    cursor: pointer;
+    background-color: #068a48;
+    border: 1px solid #068a48;
+    color: white;
+    padding: 0.25rem 2rem;
+    border-radius: 20px;
+    font-weight: bold;
+}

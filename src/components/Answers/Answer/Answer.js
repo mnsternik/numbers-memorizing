@@ -1,41 +1,25 @@
-import React, { useState, useRef } from 'react';
-
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import GameContext from '../../../store/game-context';
 import UserInput from '../../../UI/UserInput/UserInput';
 
-const Answer = (props) => {
+import classes from './Answer.module.css';
 
-    const userInputNumber = useRef(); 
 
-    const compareNumbers = () => {
-        const userNumber = userInputNumber.current.value.split(''); 
-        const actualNumber = props.number.toString().split(''); 
-        const wrongPositions = []; 
+const Answer = React.forwardRef((props, ref ) => {
 
-        for (let i = 0; i < actualNumber.length; i++) {
-            if (actualNumber[i] !== userNumber[i]) wrongPositions.push(i); 
-        }
-
-        const answerInfo = {
-            numberIndex: props.index, 
-            answer: actualNumber, 
-            mistakes: wrongPositions
-        }
-
-        props.onCheckAnswers(answerInfo); 
-    }
-
+    const gameCtx = useContext(GameContext); 
 
     return (
-        <div>
+        <section className={classes.answer}>
+            {props.showAnswer && <p>{`Correct number: ${gameCtx.answers[props.index].number}`}</p>}
             <UserInput
+                className={classes.answer__input}
                 label={`${props.index + 1}.`}
-                ref={userInputNumber}
-                
+                ref={ref}
             />
-            <button onClick={compareNumbers}>Compare</button>
-        </div>
+        </section>
 
     )
-}
+})
 
 export default Answer;

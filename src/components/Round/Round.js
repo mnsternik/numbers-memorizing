@@ -9,11 +9,10 @@ const Round = (props) => {
     const [currentNumber, setCurrentNumber] = useState(0);
 
     const completeTimerHandler = () => {
-        let current = currentNumber + 1;
-        if (current === props.numbers.length) {
-            props.onEnd(); 
-        } else {
-            setCurrentNumber(current); 
+        const updatedNumber = currentNumber + 1;
+        if (updatedNumber === props.numbers.length) props.onEnd(); 
+        else {
+            setCurrentNumber(updatedNumber); 
             return [true, 0]
         }
     }
@@ -31,7 +30,6 @@ const Round = (props) => {
         </div>
     )
 }
-
 
 export default Round;
 

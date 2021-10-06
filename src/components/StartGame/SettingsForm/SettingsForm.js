@@ -7,16 +7,16 @@ import classes from './SettingsForm.module.css';
 const SettingsForm = (props) => {
 
     const numberLength = useRef();
-    const numberOfRounds = useRef(); 
-    const secondsPerRound = useRef(); 
+    const listLength = useRef(); 
+    const secondsPerNumber = useRef(); 
 
     const submitFormHandler = (event) => {
         event.preventDefault();
 
         const settings = {
             numberLength: +numberLength.current.value,
-            numberOfRounds: +numberOfRounds.current.value,
-            secondsPerRound: +secondsPerRound.current.value
+            listLength: +listLength.current.value,
+            secondsPerNumber: +secondsPerNumber.current.value
         }
         props.onStart(settings);
     }
@@ -33,7 +33,7 @@ const SettingsForm = (props) => {
             />
             <UserInput
                 label='Enter amount of numbers to remember'
-                ref={numberOfRounds}
+                ref={listLength}
                 type='number'
                 min={1}
                 max={100}
@@ -41,7 +41,7 @@ const SettingsForm = (props) => {
             />
             <UserInput
                 label='Enter time (in seconds) in which single number will be visible on the screen'
-                ref={secondsPerRound}
+                ref={secondsPerNumber}
                 type='number'
                 min={1}
                 max={300}

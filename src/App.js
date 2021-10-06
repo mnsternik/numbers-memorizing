@@ -1,15 +1,16 @@
 import React from 'react';
 
 import Game from './components/Game/Game';
+import { GameContextProvider } from './store/game-context';
 
 function App() {
 
 
 
   return (
-    <React.Fragment>
+    <GameContextProvider>
       <Game />
-    </React.Fragment>
+    </GameContextProvider>
   );
 }
 

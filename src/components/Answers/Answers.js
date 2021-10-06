@@ -1,39 +1,58 @@
-import React, { useState } from 'react';
+import React,  { useContext, useEffect, useRef, useState } from 'react';
 
+import GameContext from '../../store/game-context';
 import Answer from './Answer/Answer';
 
+import classes from './Answers.module.css'; 
+
 const Answers = (props) => {
+    
+    const gameCtx = useContext(GameContext);
+    const inputsRef = useRef([]); 
+    const [showAnswers, setShowAnswers] = useState(false); 
 
-    const [answers, setAnswers] = useState([]);
+    useEffect(() => {
+        inputsRef.current = inputsRef.current.slice(0, gameCtx.numbers.length);
+     }, [gameCtx.numbers]);
 
-    const onCheckAnswersHandler = (answer) => {
-        const updatedAnswers = answers;  
-        updatedAnswers.push(answer);   
-        setAnswers(updatedAnswers); 
-        showAnwser();
+    const submitHandler = (event) => {
+        event.preventDefault(); 
+        gameCtx.numbers.forEach((num, i) => {
+            let number = num; 
+            let answer = inputsRef.current[i].value;
+            // map mistakes instead of for loop
+            let mistakes = []; 
+            for (let i = 0; i < number.length; i++) {
+                if (number[i] !== answer[i]) mistakes.push(i); 
+            }
+            const answerInfo = {
+                number: num, 
+                answer: inputsRef.current[i].value, 
+                mistakes: mistakes
+            }
+            gameCtx.getAnswerHandler(answerInfo)
+        })
+        setShowAnswers(true);
     }
 
-    const showAnwser = () => {
-        console.log(answers);
-    }
-
-    const inputs = props.numbers.map((input, index) => {
+    const inputs = gameCtx.numbers.map((input, i) => {
         return (
             <Answer
                 number={input}
-                index={index} 
-                key={index}
-                onCheckAnswers={onCheckAnswersHandler}
+                index={i} 
+                key={i}
+                ref={el => inputsRef.current[i] = el} 
+                showAnswer={showAnswers}
             />
         )
     })
 
-
     return (
-        <div>
+        <form className={classes.form} onSubmit={submitHandler} >
             {inputs}
-            <button onClick={onCheckAnswersHandler}>Check numbers</button>
-        </div>
+            <button>Check numbers</button>
+        </form>
+        
     )
 }
 
