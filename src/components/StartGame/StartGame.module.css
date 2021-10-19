@@ -1,4 +1,33 @@
 .header {
     width: 40%; 
-    margin: 48px auto;
+    margin: 48px auto 0 auto;
+}
+
+.header__logo {
+    display: flex; 
+    flex-direction: row;
+}
+
+.header__logo img {
+    height: 120px;
+    margin-left: 20px;
+}
+
+.header h1 {
+    background-color: #068a48;
+    border-radius: 4px;
+    font-family: 'Raleway', sans-serif;
+    padding: 12px 18px 12px 18px;
+    color: white;
+}
+
+.header section {
+    font-size: 21px;
+    text-align: center;
+    margin: 5rem auto 3rem auto; 
+    width: 75%; 
+}
+
+.header section p {
+    padding-bottom: 2rem;
 }

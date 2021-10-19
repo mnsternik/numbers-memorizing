@@ -10,7 +10,7 @@ const Round = (props) => {
 
     const completeTimerHandler = () => {
         const updatedNumber = currentNumber + 1;
-        if (updatedNumber === props.numbers.length) props.onEnd(); 
+        if (updatedNumber === props.numbers.length) props.onEndMemorazing(); 
         else {
             setCurrentNumber(updatedNumber); 
             return [true, 0]
@@ -24,7 +24,8 @@ const Round = (props) => {
                 className={classes.timer}
                 isPlaying
                 duration={props.seconds}
-                colors={[['#46a3e0', 0.33], ['#f1c950', 0.33], ['#e24d4d', 0.33]]}
+                size={100}
+                colors={[['#068a48', 1]]}   
                 onComplete={completeTimerHandler}
             />
         </div>
