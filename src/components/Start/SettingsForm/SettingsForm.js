@@ -1,18 +1,18 @@
 import React, { useRef, useState } from 'react';
 
-import UserInput from '../../../UI/UserInput/UserInput';
+import Input from '../../../UI/Input/Input';
 
 import classes from './SettingsForm.module.css';
 
-const SettingsForm = (props) => {
 
+const SettingsForm = (props) => {
 
     const numberLength = useRef();
     const listLength = useRef();
     const secondsPerNumber = useRef();
     const [isFormEmpty, setIsFormEmpty] = useState(); 
 
-    const submitFormHandler = (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
         const settings = {
             numberLength: +numberLength.current.value,
@@ -21,14 +21,13 @@ const SettingsForm = (props) => {
         }
         const isEmpty = Object.values(settings).some(s => s === null || s === '' || s === 0);
         setIsFormEmpty(isEmpty); 
-        if (isEmpty) return;
-        else props.onStartGame(settings); 
+        if (!isEmpty) props.onStartGame(settings); 
     }
 
     return (
-        <form className={classes.form} onSubmit={submitFormHandler}>
+        <form className={classes.form} onSubmit={submitHandler}>
             {isFormEmpty && <p className={classes.message}>Please fill the data</p>}
-            <UserInput
+            <Input
                 label='Number of digits'
                 ref={numberLength}
                 type='number'
@@ -36,7 +35,7 @@ const SettingsForm = (props) => {
                 max={999}
                 step={1}
             />
-            <UserInput
+            <Input
                 label='Number of numbers'
                 ref={listLength}
                 type='number'
@@ -44,7 +43,7 @@ const SettingsForm = (props) => {
                 max={100}
                 step={1}
             />
-            <UserInput
+            <Input
                 label='Seconds per number'
                 ref={secondsPerNumber}
                 type='number'
@@ -53,7 +52,7 @@ const SettingsForm = (props) => {
                 step={1}
             />
             <div className={classes.button}>
-                <button>Start!</button>
+                <button> Start!</button>
             </div>
         </form >
     )

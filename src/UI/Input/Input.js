@@ -1,8 +1,8 @@
 import React from 'react';
 
-import classes from './UserInput.module.css';
+import classes from './Input.module.css';
 
-const UserInput = React.forwardRef((props, ref ) => {
+const Input = React.forwardRef((props, ref ) => {
     return (
         <div className={classes.input}>
             <label>{props.label}</label>
@@ -20,4 +20,4 @@ const UserInput = React.forwardRef((props, ref ) => {
     )
 })
 
-export default UserInput;
+export default Input;

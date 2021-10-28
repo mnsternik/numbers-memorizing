@@ -4,9 +4,9 @@ const GameContext = createContext({
     secondsPerNumber: 0,
     numbers: [],
     answers: [],
-    generateListOfRandomNumbers: (listLength, numberLength) => {},
     getAnswerHandler: (answer) => {},
     getSettingsHandler: (settings) => {},
+    clearDataHandler: () => {}, 
 })
 
 export const GameContextProvider = (props) => {
@@ -34,15 +34,21 @@ export const GameContextProvider = (props) => {
         setAnswers(updatedAnswers);
     }
 
+    const clearDataHandler = () => {
+        setSecondsPerNumber(null);
+        setNumbers([]);
+        setAnswers([]); 
+    }
+
     return (
         <GameContext.Provider
             value={{
                 secondsPerNumber: secondsPerNumber,
                 numbers: numbers,
                 answers: answers,
-                generateListOfRandomNumbers: generateListOfRandomNumbers,
                 getAnswerHandler: getAnswerHandler,
-                getSettingsHandler: getSettingsHandler
+                getSettingsHandler: getSettingsHandler,
+                clearDataHandler: clearDataHandler
             }}>
             {props.children}
         </GameContext.Provider>

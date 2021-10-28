@@ -1,18 +1,18 @@
 import React from 'react';
 
-import classes from './StartGame.module.css';
+import classes from './Start.module.css';
 
 import SettingsForm from './SettingsForm/SettingsForm';
 import brainImg from './../../assets/brain-icon.png';
 
-const StartGame = (props) => {
-    //add gradient to header
+
+const Start= (props) => {
     
     return (
         <React.Fragment>
             <div className={classes.header}>
                 <div className={classes.header__logo}>
-                    <h1>MEMORAZING NUMBERS</h1>
+                    <h1>MEMORIZING NUMBERS</h1>
                     <img src={brainImg} alt='brain'/>
                 </div>
                 <section>
@@ -25,4 +25,4 @@ const StartGame = (props) => {
     )
 }
 
-export default StartGame;
+export default Start;
