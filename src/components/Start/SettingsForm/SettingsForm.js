@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import Input from '../../../UI/Input/Input';
+import Button from '../../../UI/Button/Button';
 
 import classes from './SettingsForm.module.css';
 
@@ -19,7 +20,7 @@ const SettingsForm = (props) => {
             listLength: +listLength.current.value,
             secondsPerNumber: +secondsPerNumber.current.value
         }
-        const isEmpty = Object.values(settings).some(s => s === null || s === '' || s === 0);
+        const isEmpty = Object.values(settings).some(setting => !setting);
         setIsFormEmpty(isEmpty); 
         if (!isEmpty) props.onStartGame(settings); 
     }
@@ -28,32 +29,33 @@ const SettingsForm = (props) => {
         <form className={classes.form} onSubmit={submitHandler}>
             {isFormEmpty && <p className={classes.message}>Please fill the data</p>}
             <Input
-                label='Number of digits'
+                label='Number of digits:'
                 ref={numberLength}
                 type='number'
+                default={1}
                 min={1}
                 max={999}
                 step={1}
             />
             <Input
-                label='Number of numbers'
+                label='Number of numbers:'
                 ref={listLength}
                 type='number'
+                default={2}
                 min={1}
                 max={100}
                 step={1}
             />
             <Input
-                label='Seconds per number'
+                label='Seconds per number:'
                 ref={secondsPerNumber}
+                default={1}
                 type='number'
                 min={1}
                 max={300}
                 step={1}
             />
-            <div className={classes.button}>
-                <button> Start!</button>
-            </div>
+            <Button newClasses={classes.button}>Start</Button>
         </form >
     )
 }

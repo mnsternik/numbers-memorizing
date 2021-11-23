@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
+import Button from '../../UI/Button/Button';
+
 import classes from './Round.module.css';
 
 const Round = (props) => {
 
     const [currentNumber, setCurrentNumber] = useState(0);
     const [timerKey, setTimerKey] = useState(0); 
-
 
     //CountdownCircleTimer accepts [true, 0] in onComplete to repeat timer 
     const completeTimerHandler = () => {
@@ -28,7 +29,6 @@ const Round = (props) => {
         <div className={classes.round}>
             <p>{props.numbers[currentNumber]}</p>
             <CountdownCircleTimer
-                className={classes.timer}
                 key={timerKey}
                 isPlaying
                 duration={props.seconds}
@@ -36,7 +36,7 @@ const Round = (props) => {
                 colors={[['#068a48', 1]]}   
                 onComplete={completeTimerHandler}
             />
-            <button onClick={showNext}>NEXT</button>
+            <Button onClick={showNext}>Next</Button>
         </div>
     )
 }

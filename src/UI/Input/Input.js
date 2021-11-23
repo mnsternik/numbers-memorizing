@@ -11,6 +11,7 @@ const Input = React.forwardRef((props, ref ) => {
                 ref={ref}
                 value={props.value}
                 onChange={props.onChange}
+                defaultValue={props.default}
                 type={props.type}
                 max={props.max}
                 min={props.min}

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import GameContext from '../../store/game-context';
 import SummaryItem from './SummaryItem/SummaryItem';
+import Button from '../../UI/Button/Button';
 
 import classes from './Summary.module.css'; 
 
@@ -11,17 +12,14 @@ const Summary = (props) => {
     const [score, setScore] = useState(); 
     const gameCtx = useContext(GameContext); 
 
+    //calculating score 
     useEffect(() => {
-        let mistakes = 0;
-        let totalDigits = 0; 
-        gameCtx.answers.forEach(answer => {
-            mistakes = mistakes + answer.mistakes.length; 
-            totalDigits = totalDigits + answer.number.length;
-        })
-        setScore((((totalDigits - mistakes) / totalDigits) * 100).toFixed(0))
+        console.log(gameCtx.answers);
+        const mistakes = gameCtx.answers.reduce((ac, n) => ac + n.mistakes.length, 0)
+        const digits = gameCtx.answers.reduce((ac, n) => ac + n.number.length, 0)
+        setScore(Math.floor(((digits - mistakes) / digits) * 100));
     }, [gameCtx.answers])
     
-
     const toggleAnswersHandler = () => {
         setShowAnswers(show => !show); 
     }
@@ -41,16 +39,12 @@ const Summary = (props) => {
     return (
         <div className={classes.summary}>
             <p>{`You memorized correctly ${score}% of all digits!`}</p>
-            <button 
-                className={classes.button} 
-                onClick={toggleAnswersHandler}>
+            <Button onClick={toggleAnswersHandler}>
                     {showAnswers ? 'Hide answers' : 'Show answers'}
-            </button>
-            <button 
-                className={classes.button} 
-                onClick={props.onReplay}>
+            </Button>
+            <Button onClick={props.onReplay}>
                     Try again!
-            </button>
+            </Button>
             {showAnswers && summary}
         </div>
     )

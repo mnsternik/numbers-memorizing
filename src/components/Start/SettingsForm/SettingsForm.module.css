@@ -7,26 +7,10 @@
     flex-direction: column;
 }
 
-.button {
-    margin-top: 42px;
-    font-size: 21px;
-    display: flex; 
-    justify-content: center;
-}
-
 .message {
     color: rgb(230, 81, 81); 
 }
 
-.form button {
-    font: inherit;
-    height: 60px;
-    width: 120px;
-    cursor: pointer;
-    background-color: #068a48;
-    border: 1px solid #068a48;
-    color: white;
-    padding: 0.25rem 2rem;
-    border-radius: 20px;
-    font-weight: bold;
+.button {
+    background-color: blue;
 }

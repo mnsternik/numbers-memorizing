@@ -2,6 +2,7 @@ import React,  { useContext, useEffect, useRef } from 'react';
 
 import GameContext from '../../store/game-context';
 import Answer from './Answer/Answer';
+import Button from '../../UI/Button/Button';
 
 import classes from './Answers.module.css'; 
 
@@ -15,7 +16,6 @@ const Answers = (props) => {
     useEffect(() => {
         inputsRef.current = inputsRef.current.slice(0, gameCtx.numbers.length);
      }, [gameCtx.numbers]);
-
 
     const submitHandler = (event) => {
         event.preventDefault(); 
@@ -53,11 +53,9 @@ const Answers = (props) => {
             <p>Type what you memorize!</p>
             <form className={classes.form} onSubmit={submitHandler} >
                 {inputs}
-                <button>Check numbers</button>
+                <Button>Check</Button>
             </form>
         </div>
-
-        
     )
 }
 

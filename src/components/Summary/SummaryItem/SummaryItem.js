@@ -9,9 +9,9 @@ const SummaryItem = (props) => {
     const isAnswer = props.userAnswer.length > 0; 
 
     useEffect(() => {
-        const cNumber = props.correctNumber.split(''); 
-        const uNumber = props.userAnswer.split(''); 
-        const colored = uNumber.map((n, i) => n === cNumber[i] ? n : `<span style="color:red">${n}</span>`).join('');
+        const correct = props.correctNumber.split(''); 
+        const answer = props.userAnswer.split(''); 
+        const colored = answer.map((n, i) => n === correct[i] ? n : `<span style="color:red">${n}</span>`).join('');
         setColoredNumber(colored);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

@@ -1,17 +1,17 @@
 .summary {
+    display: flex; 
+    flex-direction: column;
     margin-top: 48px; 
     text-align: center;
 }
 
-.button {
-    font: inherit;
-    height: 60px;
-    width: 120px;
-    cursor: pointer;
-    background-color: #068a48;
-    border: 1px solid #068a48;
-    color: white;
-    padding: 0.25rem 2rem;
-    border-radius: 20px;
+.summary p {
+    font-size: 21px;
+}
+
+.bold {
     font-weight: bold;
 }
+
+
+
