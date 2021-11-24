@@ -17,6 +17,8 @@
     background-color: rgb(255, 249, 249);
     color: rgb(22, 21, 21); 
     font: inherit;
+    font-size: 21px;
+    letter-spacing: 1px;
     padding-left: 0.5rem;
     transition: border-bottom-color 0.25s;
   }

@@ -32,7 +32,7 @@ const SettingsForm = (props) => {
                 label='Number of digits:'
                 ref={numberLength}
                 type='number'
-                default={1}
+                default={3}
                 min={1}
                 max={999}
                 step={1}
@@ -41,7 +41,7 @@ const SettingsForm = (props) => {
                 label='Number of numbers:'
                 ref={listLength}
                 type='number'
-                default={2}
+                default={3}
                 min={1}
                 max={100}
                 step={1}
@@ -49,7 +49,7 @@ const SettingsForm = (props) => {
             <Input
                 label='Seconds per number:'
                 ref={secondsPerNumber}
-                default={1}
+                default={3}
                 type='number'
                 min={1}
                 max={300}

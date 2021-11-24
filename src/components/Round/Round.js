@@ -33,7 +33,7 @@ const Round = (props) => {
                 isPlaying
                 duration={props.seconds}
                 size={100}
-                colors={[['#068a48', 1]]}   
+                colors={[['#5E5553', 1]]}   
                 onComplete={completeTimerHandler}
             />
             <Button onClick={showNext}>Next</Button>

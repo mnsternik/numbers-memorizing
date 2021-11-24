@@ -1,16 +1,24 @@
 .item {
     display: flex; 
+    height: auto;
     flex-direction: row;
+    justify-content: center;
+    align-self: flex-start;
     text-align: left;
     max-width: 45rem;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    float: right;
     margin-top: 0.5rem;
-    font-size: 18px;
+    font-size: 14px;
     border-radius: 2px;
-    line-height: 8px;
     letter-spacing: 1px;
+}
+
+.item p {
+    max-width: 60vw;
+    line-height: 21px;
+    overflow-wrap: break-word;
 }
 
 .item__numeration {
