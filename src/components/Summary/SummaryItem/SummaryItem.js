@@ -22,9 +22,9 @@ const SummaryItem = (props) => {
                 <span>{`${props.index + 1}.`}</span>
             </div>
             <div className={classes.item__content}>
-                {isAnswer ? <p dangerouslySetInnerHTML={{ __html: `Answer: ${coloredNumber}` }}/> : <p className={classes.emptyAnswer}>Nothing memorized</p>}
-                {isMistake && <p>{`Correct: ${props.correctNumber}`}</p>} 
-                {isMistake ? <p>{`Mistakes: ${props.mistakes.length}`}</p> : <p className={classes.correct}>No mistakes!</p>} 
+                {isAnswer ? <p dangerouslySetInnerHTML={{ __html: `<span>Answer:</span> ${coloredNumber}` }}/> : <p className={classes.emptyAnswer}><span>Answer: </span> None</p>}
+                {isMistake && <p><span>Correct: </span>{props.correctNumber}</p>} 
+                {isMistake ? <p><span>Mistakes: </span>{props.mistakes.length}</p> : <p className={classes.correct}>No mistakes!</p>} 
             </div>
         </section>
     )

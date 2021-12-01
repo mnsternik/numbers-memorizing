@@ -1,9 +1,9 @@
 .round {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     width: 90vw;
     overflow-wrap: break-word;
-    flex-direction: column;
     text-align: center;
     margin: 10rem auto;
     padding: 0 auto;
@@ -17,8 +17,5 @@
     margin: 42px 0;
     font-size: 60px;
     font-weight: bold;
-}
-
-.button {
-    background-color: white;
+    user-select: none;
 }

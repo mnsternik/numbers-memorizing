@@ -1,16 +1,12 @@
 .form {
+    display: flex;
+    flex-direction: column;
     width: 40%;
     margin: 0 auto;
-    font-size: 18px;
-    display: flex;
+    font-size: 17px;
     align-items: center;
-    flex-direction: column;
 }
 
 .message {
     color: rgb(230, 81, 81); 
-}
-
-.button {
-    background-color: blue;
 }

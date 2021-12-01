@@ -4,9 +4,10 @@ const GameContext = createContext({
     secondsPerNumber: 0,
     numbers: [],
     answers: [],
-    getAnswerHandler: (answer) => {},
-    getSettingsHandler: (settings) => {},
-    clearDataHandler: () => {}, 
+    getAnswerHandler: (answer) => { },
+    getSettingsHandler: (settings) => { },
+    getScore: () => {}, 
+    clearDataHandler: () => { },
 })
 
 export const GameContextProvider = (props) => {
@@ -17,15 +18,21 @@ export const GameContextProvider = (props) => {
 
     const getSettingsHandler = (settings) => {
         setSecondsPerNumber(settings.secondsPerNumber);
-        setNumbers(generateListOfRandomNumbers(settings.listLength, settings.numberLength)); 
+        setNumbers(generateListOfRandomNumbers(settings.listLength, settings.numberLength));
     }
 
     const generateListOfRandomNumbers = (listLength, numberLength) => {
         const numbers = Array(listLength).fill(0);
-        return numbers.map(number =>  {
+        return numbers.map(number => {
             number = Array(numberLength).fill(0);
             return number.map(() => Math.floor(Math.random() * 10)).join('');
         })
+    }
+
+    const getScore = () => {
+        const mistakes = answers.reduce((ac, n) => ac + n.mistakes.length, 0)
+        const digits = answers.reduce((ac, n) => ac + n.number.length, 0)
+        return Math.floor(((digits - mistakes) / digits) * 100);
     }
 
     const getAnswerHandler = (answer) => {
@@ -37,7 +44,7 @@ export const GameContextProvider = (props) => {
     const clearDataHandler = () => {
         setSecondsPerNumber(null);
         setNumbers([]);
-        setAnswers([]); 
+        setAnswers([]);
     }
 
     return (
@@ -48,6 +55,7 @@ export const GameContextProvider = (props) => {
                 answers: answers,
                 getAnswerHandler: getAnswerHandler,
                 getSettingsHandler: getSettingsHandler,
+                getScore: getScore, 
                 clearDataHandler: clearDataHandler
             }}>
             {props.children}
@@ -55,4 +63,4 @@ export const GameContextProvider = (props) => {
     )
 }
 
-export default GameContext; 
+export default GameContext;

@@ -1,17 +1,25 @@
 .summary {
     display: flex; 
     flex-direction: column;
-    margin-top: 48px; 
     text-align: center;
 }
 
-.summary p {
-    font-size: 21px;
+.summary h2 {
+    font-weight: 400;
+    margin-bottom: 48px;
 }
 
-.bold {
-    font-weight: bold;
+.score {
+    font-weight: 1000; 
 }
 
+span {
+    font-weight: 500;
+}
 
+@media screen and (max-width: 786px) {
 
+    .summary h2{
+        font-size: 20px;
+    };
+}

@@ -2,11 +2,9 @@
     height: 80px; 
     display: flex;
     justify-content: center;
-
 }
 
 .answer__input {
     width: 200px;
     height: 40px; 
-    font-size: 31px;
 }
