@@ -1,0 +1,21 @@
+.round {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 90vw;
+    overflow-wrap: break-word;
+    text-align: center;
+    margin: 10rem auto;
+    padding: 0 auto;
+}
+
+.round div {
+    margin: 0 auto;
+}
+
+.round p {
+    margin: 42px 0;
+    font-size: 60px;
+    font-weight: bold;
+    user-select: none;
+}
