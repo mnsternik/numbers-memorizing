@@ -5,8 +5,6 @@ import classes from './Answer.module.css';
 
 const AnswerItem = React.forwardRef((props, ref) => {
 
-    // https://codepen.io/thebabydino/pen/mRrPwB   input like this 
-
     return (
         <section className={classes.answer}>
             <Input
