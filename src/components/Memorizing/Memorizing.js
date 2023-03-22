@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import GameContext from '../../store/game-context';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import Button from '../../UI/Button/Button';
 
@@ -6,11 +7,13 @@ import classes from './Memorizing.module.css';
 
 const Memorizing = (props) => {
 
+    const gameCtx = useContext(GameContext);
+
     const [currentNumberIndex, setCurrentNumberIndex] = useState(0);
 
-    const completeTimerHandler = () => {
+    const timerCompleteHandler = () => {
         const newNumberIndex = currentNumberIndex + 1;
-        if (newNumberIndex === props.numbers.length) {
+        if (newNumberIndex === gameCtx.numbers.length) {
             props.onShowAnswers();
         }
         else {
@@ -23,18 +26,18 @@ const Memorizing = (props) => {
     return (
         <div className={classes.round}>
 
-            <p>{props.numbers[currentNumberIndex]}</p>
+            <p>{gameCtx.numbers[currentNumberIndex]}</p>
 
             <CountdownCircleTimer
                 key={currentNumberIndex}
                 isPlaying
-                duration={props.seconds}
+                duration={gameCtx.secondsPerNumber}
                 size={100}
                 colors={[['#5E5553', 1]]}
-                onComplete={completeTimerHandler}
+                onComplete={timerCompleteHandler}
             />
 
-            <Button onClick={completeTimerHandler}>Next</Button>
+            <Button onClick={timerCompleteHandler}>Next</Button>
 
         </div>
     )
