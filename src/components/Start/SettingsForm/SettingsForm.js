@@ -32,9 +32,6 @@ const SettingsForm = (props) => {
 
         const numbers = generateListOfRandomNumbers(listLength, numberLength);
 
-        // gameCtx.setNumbersHandler(numbers);
-        // gameCtx.setSecondsPerNumberHandler(secondsPerNumber);
-
         gameCtx.dispatchGameState({
             numbers: numbers,
             secondsPerNumber: secondsPerNumber
